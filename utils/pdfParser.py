@@ -39,7 +39,8 @@ class DocumentProcessor:
         self.chunk_size = chunk_size
         self.overlap = overlap
 
-    async def pdfLoader(self, file_path):
+    @staticmethod
+    async def pdf_loader(file_path):
         try:
             loader = PyPDFLoader(file_path)
             pages = []
@@ -53,7 +54,8 @@ class DocumentProcessor:
         except Exception as e:
             raise RuntimeError(f"An error occurred while loading the document: {e}")
 
-    def clean_text(self, texts):
+    @staticmethod
+    def clean_text(texts):
         cleaned_chunks = []
         for chunk in texts:
             try:
