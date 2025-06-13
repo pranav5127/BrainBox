@@ -15,13 +15,13 @@ Attributes:
     chunk_overlap (int): The overlap size between consecutive chunks to maintain context.
 
 Methods:
-    pdfLoader(path):
+    pdf_loader(path):
         Loads the content of the PDF file from the specified path and returns the combined text.
 
-    cleanText(texts):
+    clean_text(texts):
         Clean the texts using regex
 
-    chunkCreator():
+    chunk_creator():
         Divides the loaded document text into chunks based on the class's chunk size and overlap.
 
 Usage:
@@ -32,9 +32,9 @@ Usage:
 
 class DocumentProcessor:
     def __init__(
-        self,
-        chunk_size=700,
-        overlap=50,
+            self,
+            chunk_size=700,
+            overlap=50,
     ):
         self.chunk_size = chunk_size
         self.overlap = overlap
@@ -68,7 +68,7 @@ class DocumentProcessor:
         return cleaned_chunks
 
     # Method to divide the PDF into chunks
-    def chunkCreator(self, texts):
+    def chunk_creator(self, texts):
         try:
             text_splitter = RecursiveCharacterTextSplitter(
                 chunk_size=self.chunk_size,
