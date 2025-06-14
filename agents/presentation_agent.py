@@ -3,10 +3,10 @@ import json
 import re
 from collections import Counter
 
-from utils.cloudinary_service import CloudinaryService
-from utils.gemini_service import GeminiService
-from utils.image_search_service import ImageSearchService
-from utils.presentation_service import PPTXService
+from utils.common.cloudinary_service import CloudinaryService
+from utils.common.gemini_service import GeminiService
+from utils.presentation.image_search_service import ImageSearchService
+from utils.presentation.presentation_service import PPTXService
 
 """
 AI-Powered Presentation Generator with Image Integration
