@@ -4,8 +4,10 @@ import json
 import re
 import os
 from utils.common.gemini_service import GeminiService
+from utils.common.db import DatabaseService
 
 gemini = GeminiService()
+data=DatabaseService()
 
 
 def extract_text(file_path):
@@ -40,14 +42,21 @@ Return the evaluation in JSON format with the keys:
 Only return the JSON.
 """
     return prompt
-
-
-def evaluate_exam(file_p):
-    exam_content = extract_text(file_p)
-    prompt = evaluate_exam_prompt(exam_content)
-    response = gemini.get_response(prompt)
+def clean_response(response):
     cleaned = re.sub(r"^```(?:json)?|```$", "", response, flags=re.IGNORECASE).strip()
     return json.loads(cleaned)
 
+def evaluate_exam(file_path):
+    exam_content = extract_text(file_path)
+    prompt = evaluate_exam_prompt(exam_content)
+    response = gemini.get_response(prompt)
+    cleaned=clean_response(response)
+    print(cleaned)
+    data.store_exam_values(file_path, cleaned)
+
+
+
+path=input("Enter the absolute path of the file")
+evaluate_exam(path)
 
 
