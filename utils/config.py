@@ -7,8 +7,6 @@ GEMINI_API_KEY=os.getenv("GEMINI_API_KEY")
 CLOUDINARY_CLOUD_NAME=os.getenv("CLOUDINARY_CLOUD_NAME")
 CLOUDINARY_API_KEY=os.getenv("CLOUDINARY_API_KEY")
 CLOUDINARY_API_SECRET=os.getenv("CLOUDINARY_API_SECRET")
-UNSPLASH_API_KEY = os.getenv("UNSPLASH_API_KEY")
-UNSPLASH_URL = "https://api.unsplash.com/search/photos"
 
 if not GEMINI_API_KEY:
     raise Exception("GEMINI_API_KEY is not set")
