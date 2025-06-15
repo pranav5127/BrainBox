@@ -2,6 +2,7 @@ from langchain.chains import RetrievalQA
 from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from utils.config import GEMINI_API_KEY
 from langchain_huggingface import HuggingFaceEmbeddings
