@@ -1,7 +1,8 @@
 import sqlite3
 import os
 
-class DatabaseService:
+
+class ExamDataBaseService:
     def __init__(self, db_name="question.db"):
         self.project_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'data'))
         self.db_path = os.path.join(self.project_folder, db_name)
@@ -30,4 +31,32 @@ class DatabaseService:
         conn.commit()
 
 
+class NoteDataBaseService:
+    def __init__(self, db_name="notes.db"):
+        self.project_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'data'))
+        self.db_path = os.path.join(self.project_folder, db_name)
+
+    def create_note_table(self):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+
+        cursor.execute('''
+                CREATE TABLE IF NOT EXISTS bullet_points (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    topic TEXT NOT NULL,
+                    point TEXT NOT NULL,
+                    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+        conn.commit()
+
+
+    def store_note_values(self,topic,point):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO bullet_points (topic, point) VALUES (?, ?)",
+            (topic, point)
+        )
+        conn.commit()
 

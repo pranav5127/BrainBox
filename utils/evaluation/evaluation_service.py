@@ -4,10 +4,10 @@ import json
 import re
 import os
 from utils.common.gemini_service import GeminiService
-from utils.common.db import DatabaseService
+from utils.common.db import ExamDataBaseService
 
 gemini = GeminiService()
-data=DatabaseService()
+data=ExamDataBaseService()
 
 
 def extract_text(file_path):
