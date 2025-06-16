@@ -1,8 +1,6 @@
 from utils.common.db import NoteDataBaseService
 from utils.common.rag_service import GeminiRAGService
 
-
-
 Store=NoteDataBaseService()
 
 def generate_notes_prompt():
